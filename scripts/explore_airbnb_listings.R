@@ -8,7 +8,7 @@
 
 # 1. Set your local repository path -------------------------------------
 
-repo_dir <- "/Users/YOUR_USERNAME/london-airbnb-listings"  # CHANGE THIS!
+repo_dir <- "/Users/sarasethia/github/london-airbnb-listings"  # CHANGE THIS!
 
 # The dataset is in the main folder of the repository.
 data_path <- file.path(repo_dir, "listings.csv")
@@ -34,22 +34,22 @@ print(head(listings))
 # 3. Count listings by London borough -----------------------------------
 
 borough_counts <- sort(table(listings$neighbourhood), decreasing = TRUE)
-top_10 <- head(borough_counts, 10)
+top_20 <- head(borough_counts, 20)
 
 cat("\nTop 10 boroughs by number of Airbnb listings:\n")
-print(top_10)
+print(top_20)
 
 # 4. Make and save a simple bar chart -----------------------------------
 
 output_dir <- file.path(repo_dir, "outputs")
 dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
-chart_path <- file.path(output_dir, "top_10_boroughs.png")
+chart_path <- file.path(output_dir, "top_20_boroughs.png")
 
 png(chart_path, width = 1200, height = 800)
 par(mar = c(5, 12, 4, 2))
 barplot(
-  rev(top_10),
+  rev(top_20),
   horiz = TRUE,
   las = 1,
   col = "steelblue",
@@ -61,3 +61,4 @@ dev.off()
 cat("\nChart saved to:\n", chart_path, "\n")
 
 # Optional: Can you change the chart to show the top 5 boroughs instead?
+
